@@ -1,8 +1,10 @@
 {
+  "id": 1,
+  "boardTitle": "비더에그 첫번째 프로젝트",
   "kanbanList": [
     {
       "id": 1,
-      "title": "진행 중",
+      "listTitle": "진행 중",
       "cards": [
         {
           "id": 1,
@@ -18,7 +20,7 @@
     },
     {
       "id": 2,
-      "title": "완료",
+      "listTitle": "완료",
       "cards": [
         {
           "id": 3,

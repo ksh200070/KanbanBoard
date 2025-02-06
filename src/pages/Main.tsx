@@ -1,21 +1,28 @@
 import styles from './Main.module.scss';
-import KanbanList, { KanbanListProps } from '@components/KanbanList/KanbanList';
-import { kanbanList } from './../data/data.json';
+import rawData from '@data/data.json';
+import KanbanList from '@components/KanbanList/KanbanList';
+import { Board, KanbanListProps } from '@/types/global';
+import { useState } from 'react';
 
 export default function Main() {
-  const data: KanbanListProps[] = kanbanList;
+  const [data, setData] = useState<Board>(rawData);
 
   return (
     <div className={styles.body}>
-      <h1>project 1</h1>
+      <input
+        className={styles['board-title']}
+        defaultValue={data.boardTitle}
+        onChange={(e) =>
+          setData((prev) => {
+            const update = prev;
+            update['boardTitle'] = e.target.value;
+            return update;
+          })
+        }
+      />
       <section className={styles['list-container']}>
-        {data.map((list) => (
-          <KanbanList
-            key={list.id}
-            id={list.id}
-            title={list.title}
-            cards={list.cards}
-          />
+        {data.kanbanList.map((list: KanbanListProps) => (
+          <KanbanList key={list.id} list={list} />
         ))}
       </section>
     </div>

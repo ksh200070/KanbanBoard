@@ -6,6 +6,20 @@
   background-color: #f8f8f8;
   padding: 6.4rem 20%;
 
+  .board-title {
+    font-size: 2.4rem;
+    color: #3a3a3a;
+    font-weight: 800;
+    margin-bottom: 4rem;
+    border: none;
+    background-color: inherit;
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
   .list-container {
     display: flex;
     justify-content: flex-start;
