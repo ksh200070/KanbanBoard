@@ -8,7 +8,7 @@ export default function Main() {
 
   return (
     <div className={styles.body}>
-      <h1>project 1</h1>
+      <h1 className={styles['board-title']}>{data.boardTitle}</h1>
       <section className={styles['list-container']}>
         {data.kanbanList.map((list: KanbanListProps) => (
           <KanbanList key={list.id} list={list} />
