@@ -11,6 +11,13 @@
     color: #3a3a3a;
     font-weight: 800;
     margin-bottom: 4rem;
+    border: none;
+    background-color: inherit;
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
   }
 
   .list-container {
