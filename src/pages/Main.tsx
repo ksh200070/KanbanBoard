@@ -1,21 +1,17 @@
 import styles from './Main.module.scss';
-import KanbanList, { KanbanListProps } from '@components/KanbanList/KanbanList';
-import { kanbanList } from './../data/data.json';
+import rawData from '@data/data.json';
+import KanbanList from '@components/KanbanList/KanbanList';
+import { Board, KanbanListProps } from '@/types/global';
 
 export default function Main() {
-  const data: KanbanListProps[] = kanbanList;
+  const data: Board = rawData;
 
   return (
     <div className={styles.body}>
       <h1>project 1</h1>
       <section className={styles['list-container']}>
-        {data.map((list) => (
-          <KanbanList
-            key={list.id}
-            id={list.id}
-            title={list.title}
-            cards={list.cards}
-          />
+        {data.kanbanList.map((list: KanbanListProps) => (
+          <KanbanList key={list.id} list={list} />
         ))}
       </section>
     </div>

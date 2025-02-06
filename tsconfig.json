@@ -11,7 +11,9 @@
       "@/*": ["src/*"],
       "@pages/*": ["src/pages/*"],
       "@components/*": ["src/components/*"],
-      "@styles/*": ["src/styles/*"]
+      "@styles/*": ["src/styles/*"],
+      "@data/*": ["src/data/*"],
+      "@types/*": ["src/types/*"]
     }
   },
   "exclude": ["node_modules"],
