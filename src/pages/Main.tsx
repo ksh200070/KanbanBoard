@@ -1,15 +1,23 @@
-import Card from '@components/Card/Card';
-import EmptyCard from '@components/EmptyCard/EmptyCard';
 import styles from './Main.module.scss';
+import KanbanList, { KanbanListProps } from '@components/KanbanList/KanbanList';
+import { kanbanList } from './../data/data.json';
 
 export default function Main() {
+  const data: KanbanListProps[] = kanbanList;
+
   return (
     <div className={styles.body}>
-      <EmptyCard />
-      <Card
-        tags={['관리자페이지']}
-        content='회원을 블랙리스트로 지정할 수 있는 기능을 제작합니다.'
-      />
+      <h1>project 1</h1>
+      <section className={styles['list-container']}>
+        {data.map((list) => (
+          <KanbanList
+            key={list.id}
+            id={list.id}
+            title={list.title}
+            cards={list.cards}
+          />
+        ))}
+      </section>
     </div>
   );
 }

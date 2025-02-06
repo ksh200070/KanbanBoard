@@ -1,6 +1,14 @@
+@import '@styles/mixin';
+
 .body {
   width: 100%;
   height: 100%;
   background-color: #f8f8f8;
-  padding: 64px 320px;
+  padding: 6.4rem 20%;
+
+  .list-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 2rem;
+  }
 }

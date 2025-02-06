@@ -1,6 +1,7 @@
 import styles from './Card.module.scss';
 
-type CardProps = {
+export type CardProps = {
+  id: number;
   tags: string[];
   content: string;
 };
