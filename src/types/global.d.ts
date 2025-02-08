@@ -13,6 +13,11 @@ export interface KanbanListProps {
 
 export interface CardProps {
   id: number;
-  tags: string[];
+  tags: TagProps[];
   content: string;
+}
+
+export interface TagProps {
+  name: string;
+  color?: string; // #333332
 }

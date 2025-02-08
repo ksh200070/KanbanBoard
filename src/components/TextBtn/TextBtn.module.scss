@@ -1,0 +1,10 @@
+.text-btn {
+  width: fit-content;
+  background-color: #e7e7e7;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.2rem;
+
+  &:hover {
+    background-color: #cbcbcb;
+  }
+}

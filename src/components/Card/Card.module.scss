@@ -1,4 +1,5 @@
 .container {
+  cursor: pointer;
   width: 100%;
   height: fit-content;
   padding: 2rem 1.8rem;
@@ -10,21 +11,14 @@
   flex-direction: column;
   gap: 1.4rem;
 
-  .tags {
+  .header {
     display: flex;
-    align-items: center;
-    gap: 0.4rem;
+    justify-content: space-between;
 
-    .tag {
-      height: 2.4rem;
-      color: #666;
-      background-color: #f5f5f5;
-      padding: 0 0.8rem;
-      width: fit-content;
-      font-weight: 700;
-      border-radius: 0.4rem;
+    .tags {
       display: flex;
       align-items: center;
+      gap: 0.4rem;
     }
   }
 
