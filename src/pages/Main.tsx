@@ -18,8 +18,6 @@ export default function Main() {
       updated.kanbanList.push({ id: updateListIndex(), listTitle: inputValue, cards: [] });
       return updated;
     });
-
-    console.log(data.kanbanList);
   };
 
   const deleteListHandler = (listId: number) => {
