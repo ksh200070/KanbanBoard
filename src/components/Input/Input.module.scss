@@ -1,0 +1,35 @@
+.container {
+  padding: 0 0.2rem 0 0.8rem;
+  min-width: 18rem;
+  width: 18rem;
+  height: 2.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background-color: #f1f1f1;
+  border-radius: 0.6rem;
+  color: #979797;
+  font-size: 1.3rem;
+
+  input {
+    width: 10rem;
+  }
+
+  .button {
+    padding: 0.2rem 0.8rem;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+
+    &.active {
+      color: #fff;
+      background-color: #95bcff;
+    }
+
+    &.inactive {
+      pointer-events: none;
+      color: #979797;
+      background-color: #e2e2e2;
+    }
+  }
+}

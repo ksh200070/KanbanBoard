@@ -11,18 +11,26 @@
     color: #3a3a3a;
     font-weight: 800;
     margin-bottom: 4rem;
-    border: none;
-    background-color: inherit;
-
-    &:focus {
-      outline: none;
-      box-shadow: none;
-    }
   }
 
   .list-container {
     display: flex;
     justify-content: flex-start;
     gap: 2rem;
+    overflow: scroll;
+    padding: 0 2rem 2rem 0;
+
+    .add-list-button {
+      color: #979797;
+      font-size: 1.3rem;
+      padding: 0 1.6rem 0 0.8rem;
+      width: 13.7rem;
+      height: 2.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #f1f1f1;
+      border-radius: 0.6rem;
+    }
   }
 }
