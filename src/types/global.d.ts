@@ -7,6 +7,7 @@ export interface Board {
 export interface KanbanListProps {
   id: number;
   listTitle: string;
+  isFixed?: boolean;
   cards: CardProps[];
 }
 

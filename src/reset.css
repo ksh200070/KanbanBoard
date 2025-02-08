@@ -137,3 +137,13 @@ button {
   overflow: visible;
   cursor: pointer;
 }
+
+input {
+  border: none;
+  background-color: inherit;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: none;
+}
