@@ -4,13 +4,19 @@
   width: 100%;
   height: 100%;
   background-color: #f8f8f8;
-  padding: 6.4rem 20%;
+  padding: 6.4rem 8rem 4rem 20rem;
 
   .board-title {
     font-size: 2.4rem;
     color: #3a3a3a;
     font-weight: 800;
     margin-bottom: 4rem;
+    padding: 0.4rem 1rem;
+
+    &:hover {
+      background-color: #efefef;
+      border-radius: 0.2rem;
+    }
   }
 
   .list-container {
@@ -18,7 +24,7 @@
     justify-content: flex-start;
     gap: 2rem;
     overflow: scroll;
-    padding: 0 2rem 2rem 0;
+    padding: 0 2rem 2rem 1rem;
 
     .add-list-button {
       color: #979797;
