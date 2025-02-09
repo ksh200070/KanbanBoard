@@ -1,7 +1,7 @@
 import styles from './Card.module.scss';
 import { CardProps, TagProps } from '@/types/global';
 import Tag from '@components/Tag/Tag';
-import DropdownMenu from '../DropdownMenu/DropdownMenu';
+import DropdownMenu from '@components/DropdownMenu/DropdownMenu';
 
 export default function Card({
   card,
@@ -23,7 +23,7 @@ export default function Card({
       <div className={styles.header}>
         <div className={styles.tags}>
           {card.tags.map((tag: TagProps) => (
-            <Tag key={tag.name} name={tag.name} color={tag.color} />
+            <Tag key={tag.name} tag={tag} />
           ))}
         </div>
         <DropdownMenu
