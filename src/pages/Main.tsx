@@ -1,24 +1,25 @@
 import styles from './Main.module.scss';
 import { useState } from 'react';
+import data from '@data/data.json';
+import useLocalStorage from '@hooks/useLocalStorage';
 import Input from '@/components/Input/Input';
 import KanbanList from '@components/KanbanList/KanbanList';
 import CardDetail from '@components/CardDetail/CardDetail';
 import { Board, CardProps, KanbanListProps } from '@/types/global';
-import rawData from '@data/data.json';
 
 export default function Main() {
-  const [data, setData] = useState<Board>(rawData);
+  const [board, setBoard] = useLocalStorage('board', data);
   const [isCardSelected, setIsCardSelected] = useState(false);
   const [selectedCard, setSelectedCard] = useState<CardProps | undefined>(undefined);
   const [selectedCardListIdx, setSelectedCardListIdx] = useState<number | undefined>(undefined);
 
   const updateIndex = (target: 'list' | 'card') => {
     if (target === 'list') {
-      return data.kanbanList.length + 1;
+      return board.kanbanList.length + 1;
     }
 
     if (target === 'card' && selectedCardListIdx) {
-      const findList = data.kanbanList.find(
+      const findList = board.kanbanList.find(
         (list: KanbanListProps) => list.id === selectedCardListIdx,
       );
       if (findList) {
@@ -27,8 +28,16 @@ export default function Main() {
     }
   };
 
+  const editBoardTitleHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setBoard((prev: Board) => {
+      const update = { ...prev };
+      update['boardTitle'] = e.target.value;
+      return update;
+    });
+  };
+
   const addListHandler = (inputValue: string) => {
-    setData((prev: Board) => {
+    setBoard((prev: Board) => {
       const updated = { ...prev };
       updated.kanbanList.push({
         id: updateIndex('list') as number,
@@ -40,7 +49,7 @@ export default function Main() {
   };
 
   const deleteListHandler = (listId: number) => {
-    setData((prev: Board) => {
+    setBoard((prev: Board) => {
       const updated = { ...prev };
       const updatedList = updated.kanbanList.filter((list: KanbanListProps) => list.id !== listId);
       return { id: updated.id, boardTitle: updated.boardTitle, kanbanList: updatedList };
@@ -48,7 +57,7 @@ export default function Main() {
   };
 
   const deleteCardHandler = (listId: number, cardId: number) => {
-    setData((prev: Board) => {
+    setBoard((prev: Board) => {
       const updated = { ...prev };
       const updatedList = updated.kanbanList.map((list: KanbanListProps) => {
         if (list.id === listId) {
@@ -79,7 +88,7 @@ export default function Main() {
 
   const saveCardDetailHandler = (editCard: CardProps, isCreated?: boolean) => {
     if (isCreated) {
-      setData((prev: Board) => {
+      setBoard((prev: Board) => {
         const updated = { ...prev };
         const updatedList = updated.kanbanList.map((list: KanbanListProps) => {
           if (list.id === selectedCardListIdx) {
@@ -94,14 +103,14 @@ export default function Main() {
         });
 
         return {
-          id: updateIndex('card') as number,
+          id: updated.id,
           boardTitle: updated.boardTitle,
           kanbanList: updatedList,
         };
       });
     } else {
       if (!!selectedCard && !!selectedCardListIdx) {
-        setData((prev: Board) => {
+        setBoard((prev: Board) => {
           const updated = { ...prev };
           const updatedList = updated.kanbanList.map((list: KanbanListProps) => {
             if (list.id === selectedCardListIdx) {
@@ -132,17 +141,11 @@ export default function Main() {
       <div className={styles.body}>
         <input
           className={styles['board-title']}
-          defaultValue={data.boardTitle}
-          onChange={(e) =>
-            setData((prev) => {
-              const update = prev;
-              update['boardTitle'] = e.target.value;
-              return update;
-            })
-          }
+          defaultValue={board.boardTitle}
+          onChange={editBoardTitleHandler}
         />
         <section className={styles['list-container']}>
-          {data.kanbanList.map((list: KanbanListProps) => (
+          {board.kanbanList.map((list: KanbanListProps) => (
             <KanbanList
               key={list.id}
               list={list}
